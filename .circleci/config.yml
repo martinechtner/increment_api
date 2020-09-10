@@ -1,0 +1,67 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.0-node-browsers
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: ubuntu
+          RAILS_ENV: test
+          RACK_ENV: test
+          HOST: test.com
+
+      - image: circleci/postgres:12.2
+        environment:
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: increment_api_test
+          POSTGRES_PASSWORD: 'password'
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle check --path vendor/bundle || bundle install --deployment
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Wait for db
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Database setup
+      - run:
+          name: create database
+          command: |
+            bundle exec rake db:create db:schema:load --trace
+          environment:
+            DATABASE_URL: "postgres://ubuntu@localhost:5432/increment_api_test"
+
+      # Run specs
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec --profile 10 \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          environment:
+            DATABASE_URL: "postgres://ubuntu@localhost:5432/increment_api_test"
