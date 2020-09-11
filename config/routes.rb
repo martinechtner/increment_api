@@ -11,5 +11,7 @@ Rails.application.routes.draw do
                registrations: 'registrations'
              },
              defaults: { format: :json }
+
+  get :increment, to: 'user_increments#increment'
 end
 
