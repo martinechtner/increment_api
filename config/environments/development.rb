@@ -42,6 +42,19 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+
+      resource '*',
+               headers: :any,
+               expose: ['Authorization'],
+               methods: [:get, :post, :put, :patch, :delete, :options, :head],
+               max_age: 600
+    end
+  end
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
@@ -50,3 +63,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+ENV['DEVISE_JWT_SECRET_KEY'] = '57f553f5831e19f9c980289771609d5d84d9861cdbc939750e708d7c882dc4b3d5dac25056716564b67a8c75d48fb3c109f540871b775f6a7bf769dccd9eb8d2'
