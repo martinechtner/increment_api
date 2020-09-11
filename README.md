@@ -1,6 +1,3 @@
-## Notes
-*Please do not supply your name or email address in this document. We're doing our best to remain unbiased.*
-
 ### Date
 The date you're submitting this.
 
@@ -20,7 +17,32 @@ If applicable. Did you do something that you feel could have been done better in
 If applicable, use this area to tell us what stretch goals you attempted. What went well? What do you wish you could have done better? If you didn't attempt any of the stretch goals, feel free to let us know why.
  
 ### Instructions to run assignment locally
-If applicable, please provide us with the necessary instructions to run your solution.
+
+** Note you will need postgresql installed **
+On a mac with brew
+```ruby
+brew install postgresql
+```
+
+Get the code, setup the db and run the server
+```ruby
+git clone git@github.com:martinechtner/increment_api.git 
+bundle exec rake db:setup
+bundle exec rake db:migrate
+rails s -p 3000
+```
+
+Using the API locally with curl:
+
+Create a user and sign in
+```ruby
+curl -X POST -H 'Content-Type: application/json' -d '{"user": {"email": "test@test.com","password": "test1234","password_confirmation": "test1234"}}' http://localhost:3000/signup
+```
+
+Sign in
+```ruby
+curl -X POST -H 'Content-Type: application/json' -d '{"user": {"email": "test@test.com","password": "test1234"}}' http://localhost:3000/signin
+```
 
 ### What did you not include in your solution that you want us to know about?
 Were you short on time and not able to include something that you want us to know about? Please list it here so that we know that you considered it.
