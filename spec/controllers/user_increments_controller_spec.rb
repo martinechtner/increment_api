@@ -3,6 +3,17 @@ RSpec.describe UserIncrementsController, type: :controller do
 
   before { sign_in user }
 
+  describe 'current' do
+    subject { get :current,
+                  params: {},
+                  format: :json }
+
+    it 'gets the current increment' do
+      subject
+      expect(JSON.parse(response.body)['current']).to eq 1
+    end
+  end
+
   describe 'increment' do
     subject { get :increment,
                   params: {},

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
              },
              defaults: { format: :json }
 
+  get :current, to: 'user_increments#current'
   get :increment, to: 'user_increments#increment'
 end
 
