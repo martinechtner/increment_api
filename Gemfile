@@ -39,6 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers', require: false
   gem 'rails-controller-testing'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development do

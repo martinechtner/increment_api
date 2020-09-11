@@ -10,7 +10,9 @@ If applicable, please provide the url where we can find and interact with your r
 How much time did you spend on the assignment? Normally, this is expressed in hours.
 
 ### Assumptions made
-Use this section to tell us about any assumptions that you made when creating your solution.
+- Each unique user of the API has their own increment
+- Increment starts at 1
+- Increment is not reset to 1 if the user starts a new session
 
 ### Shortcuts/Compromises made
 If applicable. Did you do something that you feel could have been done better in a real-world application? Please let us know.
