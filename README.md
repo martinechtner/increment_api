@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/martinechtner/increment_api/tree/master.svg?style=svg&circle-token=8637b8aad00bc0713899c5e585f1df94d066226e)](https://circleci.com/gh/martinechtner/increment_api/tree/master)
+
 ### Date
 The date you're submitting this.
 
