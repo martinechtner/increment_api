@@ -26,4 +26,16 @@ RSpec.describe UserIncrementsController, type: :controller do
       expect(user.reload.user_increment.current).to eq 2
     end
   end
+
+  describe 'reset' do
+    subject { put :reset,
+                  params: { current: 444 },
+                  format: :json }
+
+    it 'increments the current value by 1' do
+      subject
+      expect(JSON.parse(response.body)['current']).to eq 444
+      expect(user.reload.user_increment.current).to eq 444
+    end
+  end
 end
