@@ -11,5 +11,9 @@ Rails.application.routes.draw do
                registrations: 'registrations'
              },
              defaults: { format: :json }
+
+  get :current, to: 'user_increments#current'
+  get :increment, to: 'user_increments#increment'
+  put :reset, to: 'user_increments#reset'
 end
 

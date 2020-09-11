@@ -40,12 +40,27 @@ Using the API locally with curl:
 
 Create a user and sign in
 ```ruby
-curl -X POST -H 'Content-Type: application/json' -d '{"user": {"email": "test@test.com","password": "test1234","password_confirmation": "test1234"}}' http://localhost:3000/signup
+curl -X POST -H 'Content-Type: application/json, Accept application/json' -d '{"user": {"email": "test@test.com","password": "test1234","password_confirmation": "test1234"}}' http://localhost:3000/signup
 ```
 
 Sign in
 ```ruby
-curl -X POST -H 'Content-Type: application/json' -d '{"user": {"email": "test@test.com","password": "test1234"}}' http://localhost:3000/signin
+curl -X POST -H 'Content-Type: application/json, Accept: application/json' -d '{"user": {"email": "test@test.com","password": "test1234"}}' http://localhost:3000/signin
+```
+
+Get current increment value
+```ruby
+curl -X GET -H 'Authorization: "Bearer XXXXXX", Accept: application/json, Content-Type: application/json' -d '{}' http://localhost:3000/current
+```
+
+Increment current value
+```ruby
+curl -X GET -H 'Authorization: "Bearer XXXXXX", Accept: application/json, Content-Type: application/json' -d '{}' http://localhost:3000/increment
+```
+
+Reset current increment value
+```ruby
+curl -X PUT -H 'Authorization: "Bearer XXXXXX", Accept: application/json, Content-Type: application/json' -d '{ current: 1234 }' http://localhost:3000/reset
 ```
 
 ### What did you not include in your solution that you want us to know about?
