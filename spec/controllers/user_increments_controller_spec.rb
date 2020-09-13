@@ -10,7 +10,7 @@ RSpec.describe UserIncrementsController, type: :controller do
 
     it 'gets the current increment' do
       subject
-      expect(JSON.parse(response.body)['current']).to eq 1
+      expect(JSON.parse(response.body)['data']['current']).to eq 1
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe UserIncrementsController, type: :controller do
     it 'increments the current value by 1' do
       expect(user.user_increment.current).to eq 1
       subject
-      expect(JSON.parse(response.body)['current']).to eq 2
+      expect(JSON.parse(response.body)['data']['current']).to eq 2
       expect(user.reload.user_increment.current).to eq 2
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe UserIncrementsController, type: :controller do
 
     it 'increments the current value by 1' do
       subject
-      expect(JSON.parse(response.body)['current']).to eq 444
+      expect(JSON.parse(response.body)['data']['current']).to eq 444
       expect(user.reload.user_increment.current).to eq 444
     end
   end
