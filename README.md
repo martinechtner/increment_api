@@ -45,7 +45,7 @@ curl -X POST -H 'Content-Type: application/json, Accept application/json' -d '{"
 
 Sign in
 ```ruby
-curl -X POST -H 'Content-Type: application/json, Accept: application/json' -d '{"user": {"email": "test@test.com","password": "test1234"}}' http://localhost:3000/signin
+curl -X POST -H 'Content-Type: application/json, Accept: application/json' -d '{"user": {"email": "test@test.com","password": "test1234"}}' http://localhost:3000/login
 ```
 
 Get current increment value
