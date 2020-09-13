@@ -44,18 +44,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins '*'
-
-      resource '*',
-               headers: :any,
-               expose: ['Authorization'],
-               methods: [:get, :post, :put, :patch, :delete, :options, :head],
-               max_age: 600
-    end
-  end
-
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
