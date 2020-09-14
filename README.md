@@ -1,13 +1,18 @@
 [![CircleCI](https://circleci.com/gh/martinechtner/increment_api/tree/master.svg?style=svg&circle-token=8637b8aad00bc0713899c5e585f1df94d066226e)](https://circleci.com/gh/martinechtner/increment_api/tree/master)
 
+### Frontend Code
+[https://github.com/martinechtner/increment_frontend](https://github.com/martinechtner/increment_frontend)
+
 ### Date
-The date you're submitting this.
+Sunday September 13, 2020
 
 ### Location of deployed application
-If applicable, please provide the url where we can find and interact with your running application.
+API location: [https://increment-api.herokuapp.com](https://increment-api.herokuapp.com)
+Frontend location: [https://increment-frontend.herokuapp.com/](https://increment-frontend.herokuapp.com//signup)
 
 ### Time spent
-How much time did you spend on the assignment? Normally, this is expressed in hours.
+- 6 hours implementing the Rails API
+- 14 hours implementing the React frontend
 
 ### Assumptions made
 - Each unique user of the API has their own increment
@@ -15,15 +20,20 @@ How much time did you spend on the assignment? Normally, this is expressed in ho
 - Increment is not reset to 1 if the user starts a new session
 
 ### Shortcuts/Compromises made
-If applicable. Did you do something that you feel could have been done better in a real-world application? Please let us know.
+N/A
 
 ### Stretch goals attempted
-If applicable, use this area to tell us what stretch goals you attempted. What went well? What do you wish you could have done better? If you didn't attempt any of the stretch goals, feel free to let us know why.
+- I implemented the frontend in React to interact with the API
+- I deployed both the backend and frontend to heroku free servers
+
+I did not add any error handling on the React frontend as I was learning React as I was implementing. 
+I am sure I could improve on the React implementation as I learn more about React. 
  
 ### Instructions to run assignment locally
 
 ** Note you will need postgresql installed **
-On a mac with brew
+
+On a mac with brew:
 ```ruby
 brew install postgresql
 ```
@@ -64,9 +74,13 @@ curl -X PUT -H 'Authorization: "Bearer XXXXXX", Accept: application/json, Conten
 ```
 
 ### What did you not include in your solution that you want us to know about?
-Were you short on time and not able to include something that you want us to know about? Please list it here so that we know that you considered it.
+I ran out of time to implement the OAuth stretch goal, but I will implement in my free time going forward.
 
 ### Other information about your submission that you feel it's important that we know if applicable.
+I deployed the frontend and backend to free Heroku servers so they are slow to start if they have gone into hibernation.
 
 ### Your feedback on this technical challenge
-Have feedback for how we could make this assignment better? Please let us know.
+This was a fun challenge. 
+
+If the person reviewing this has experience with React I would appreciate feedback on how
+I could improve the frontend code.
