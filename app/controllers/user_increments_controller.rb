@@ -16,6 +16,6 @@ class UserIncrementsController < ApplicationController
   private
 
     def increment_response
-      { data: { current: current_user.user_increment.current } }
+      { current: current_user.user_increment.current }
     end
 end
