@@ -5,7 +5,7 @@ RSpec.describe UserIncrement, type: :model do
 
   describe 'validations' do
     it { validate_presence_of(:user) }
-    it { is_expected.to validate_numericality_of(:current).only_integer.is_greater_than(0) }
+    it { is_expected.to validate_numericality_of(:current).only_integer.is_greater_than(0).is_less_than(2147483648) }
   end
 
   describe 'increment' do
