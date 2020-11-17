@@ -81,6 +81,3 @@ I deployed the frontend and backend to free Heroku servers so they are slow to s
 
 ### Your feedback on this technical challenge
 This was a fun challenge. 
-
-If the person reviewing this has experience with React I would appreciate feedback on how
-I could improve the frontend code.
